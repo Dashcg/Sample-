@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday Riya</title>
+  <style>
+    :root{
+      --bg: #0f1020;
+      --card: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --accent: #ff7ac6;
+      --accent-2: #8adfff;
+      --accent-3: #ffdf6b;
+      --ring: rgba(255,255,255,0.25);
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body{
+      background: linear-gradient(135deg, #16172b, #0f1020);
+      font: 16px/1.6 system-ui, sans-serif;
+      color: var(--text);
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
+
+    /* Header */
+    header{
+      text-align:center;
+      padding:60px 20px;
+    }
+    header h1{
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      animation: glow 3s ease-in-out infinite;
+    }
+    @keyframes glow{
+      0%,100%{ text-shadow: 0 0 8px #fff5, 0 0 16px #ff7ac6; }
+      50%{ text-shadow: 0 0 16px #fff, 0 0 28px #8adfff; }
+    }
+
+    main{ flex:1; display:flex; flex-direction:column; align-items:center; gap:40px; padding:30px; }
+    .card{
+      width:min(1100px,100%);
+      background: var(--card);
+      border:1px solid var(--ring);
+      border-radius: 20px;
+      padding:30px;
+    }
+    .row{ display:flex; flex-wrap:wrap; gap:24px; }
+    .col{
+      flex:1 1 320px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.06);
+      padding:18px;
+      text-align:center;
+      transition: transform .3s ease, box-shadow .3s ease;
+      opacity:0;
+    }
+    .col:hover{
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    .col img{ width:100%; border-radius:12px; margin-bottom:10px; }
+
+    /* Memories Section */
+    .memories-section{
+      width:min(1100px,100%);
+      display:flex; gap:30px; align-items:center; flex-wrap:wrap;
+    }
+    .memories-text{ flex:1 1 300px; }
+    .memories-text h2{ font-size:32px; margin-bottom:15px; }
+    .memories-text p{ font-size:18px; line-height:1.6; }
+    .memories-images{
+      flex:1 1 400px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+    .memories-images img{
+      width:100%; border-radius:14px;
+      transition: transform .3s ease, box-shadow .3s ease;
+      opacity:0;
+    }
+    .memories-images img:hover{
+      transform:scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    /* Animation */
+    .animate {
+      animation: fadeInUp 1s ease forwards;
+    }
+    @keyframes fadeInUp{
+      0%{
+        opacity:0;
+        transform: translateY(30px);
+      }
+      100%{
+        opacity:1;
+        transform: translateY(0);
+      }
+    }
+
+    footer{ text-align:center; padding:15px; font-size:14px; opacity:.7; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="birthday-header">Happy Birthday Riya Ji 🎉</h1>
+  </header>
+
+  <main>
+    <!-- Flexbox cards -->
+    <section class="card">
+      <div class="row">
+        <div class="col">
+          <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\Snapchat-2022284757.jpg">
+          <h3>My cutest lady</h3>
+          <p>You are the most beautiful girl in the World and and I Love You so much mera bachaaaaaaaa</p>
+        </div>
+        <div class="col">
+          <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\Snapchat-658110046.jpg" alt="Balloons">
+          <h3>My  HOAT 🔥❤️‍🔥</h3>
+          <p>Sorry ji . Apka Birthday hai to meine na apki aap ek hot pic daal di. Waise hi aap itne mast lagte ho saree mei yk</p>
+        </div>
+        <div class="col">
+          <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\Snapchat-2105734306.jpg" alt="Gift">
+          <h3>My Pookie baby🎀</h3>
+          <p>Aap mere sbse jyda cutu cutu ho smjhee naaa. YOU ARE THE MOST CUTEST BABY. Stay Mine hehe</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memories Section (text left, images right) -->
+    <section class="memories-section">
+      <div class="memories-text">
+        <h2>Do you get Deja vu </h2>
+        <p>So here we are my girl. You have always been the besto wife of mine and the Prettiest one . I Love You for being you and you makes me feel loved, cared and yk i just found myself with you . So Themkuu . I'll keep loving you the best way possible and humko apse bhut pyaar hai . BHUT jyda hehehe. Hamne itni mast memories banai hai ab tk aur kuch khrb aur kuch achi but sb yaad kro to bs ye yaad aata hai ki hn yr bandi achi ho to saath ni chutta ❤️ </p>
+      </div>
+      <div class="memories-images">
+        <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\Snapchat-2117082671.jpg" alt="Memory 1">
+        <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\IMG-20240107-WA0000.jpg" alt="Memory 2">
+        <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\Snapchat-1328545639.jpg" alt="Memory 3">
+        <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\Snapchat-767810981.jpg" alt="Memory 4">
+      </div>
+    </section>
+
+    <!-- Memories Section (image left, text right) -->
+    <section class="memories-section">
+      <div class="memories-images">
+        <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\Snapchat-981985973.jpg" alt="Memory 5">
+        <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\Snapchat-140081201.jpg" alt="Memory 6">
+        <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\Snapchat-2022284757.jpg" alt="Memory 7">
+        <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\Snapchat-1253452824.jpg" alt="Memory 8">
+      </div>
+      <div class="memories-text">
+        <h2>US Dariya US</h2>
+        <p>I Love You and I love this bond . I love it so much just because tum mere saath ho yrr. Tum bhut achi ho tumhare alwa mujhe koi ni chahiye koi bhi nhi . Mei tumse infinite pyaar krunga bahuttttt jydaa krungaa hadd se bhi jydaaa. Thank you mere sath ye bond share krne ke liye. Tum mera sbse unexpected pyaar aur khushi aur sb kuch ho .<br> I love it yrr i love to call you mine and i love that we are together i love it and i mei kuch bhi krunga tumhe khush rkhne ke liye. Mujhe bs tere shakal pr wo seconds ke liye vali real smile chahiye . Thank you and apka mssg aa gya so me going . HAPPYY BIRTHDAY TO MY ONE AND ONLY DHARAM PATNI . Carmel ho ya Fort Dariya always Rocks . Hehehe</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Made with ❤ by your Husband</small>
+  </footer>
+
+  <script>
+    // Insert today's date dynamically
+    const date = new Date();
+    const options = { day: 'numeric', month: 'long' };
+    const today = date.toLocaleDateString('en-US', options);
+    document.getElementById("birthday-header").textContent =
+      `Happy Birthday Riya 🎉 - ${today}`;
+
+    // Scroll animations with IntersectionObserver
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target); // only animate once
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.col, .memories-images img').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

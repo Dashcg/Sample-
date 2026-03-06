@@ -1,265 +1,252 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Practice</title>
-<style>
-*{
-margin: 0px;
-padding: 0px;
-box-sizing: border-box;
-scroll-behaviour: smooth;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I’m Sorry, My Love 💖</title>
+  <style>
+    :root {
+      --bg1: #ffd6e7;
+      --bg2: #ffe9f3;
+      --card: rgba(255, 255, 255, 0.78);
+      --text: #5a2744;
+      --accent: #ff4f8b;
+      --accent-dark: #e13d77;
+      --shadow: 0 16px 40px rgba(164, 44, 104, 0.2);
+    }
 
-body{
-background-color: white;
-font-family: arial,sans-serif;
-line-height: 1.6;
-color: #333;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-header{
-text-align: center;
-background: #FFF5F2;
-color: black;
-padding: 15px;
-}
+    body {
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 20% 20%, #fff3f8 0, var(--bg1) 30%, var(--bg2) 100%);
+      overflow-x: hidden;
+    }
 
-.navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: black;
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -40px;
+      width: 18px;
+      height: 18px;
+      background: rgba(255, 79, 139, 0.45);
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: inherit;
+    }
+
+    .heart::before { left: -9px; }
+    .heart::after { top: -9px; }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 0; }
+      15% { opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(45deg) scale(1.35); opacity: 0; }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: reveal 0.7s ease forwards;
+    }
+
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+    .card:nth-child(4) { animation-delay: 0.6s; }
+
+    @keyframes reveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin-bottom: 8px;
+      color: var(--accent-dark);
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .apology {
+      font-size: 1.08rem;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .promise-list {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .promise-list li {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      padding: 12px 14px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .promise-list li:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(170, 58, 109, 0.18);
+    }
+
+    .buttons {
       display: flex;
       justify-content: center;
+      gap: 10px;
       flex-wrap: wrap;
-      padding: 10px 0;
-}
+      margin-top: 16px;
+    }
 
-.navbar a {
-       color: white;
-       padding: 10px 20px;
-       text-decoration: none;
-       position: relative;
-}
+    button {
+      border: none;
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-size: 0.98rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
 
-  .navbar a::after, 
-.navbar a::before {
- content: '';
- position: absolute;
- width: 100%;
- height: 2px;
- background: white;
- bottom: 5px;
- left: 0;
- transform: scaleX(0);
- transform-origin: right;
- transition: transform 0.4s ease-out;
+    .yes {
+      background: var(--accent);
+      color: #fff;
+    }
 
-}
+    .hug {
+      background: #fff;
+      color: var(--accent-dark);
+      border: 1px solid rgba(255, 79, 139, 0.4);
+    }
 
-.navbar a::before{
-top: 5px;
-transform-origin: left;
+    button:hover {
+      transform: scale(1.05);
+      filter: brightness(1.03);
+    }
 
-}
+    .message {
+      text-align: center;
+      margin-top: 14px;
+      min-height: 28px;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
 
-.navbar a:hover::after , 
-.navbar a:hover::before
-{
-transform: scaleX(1);
-}
-
-.flex-section{
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-padding: 40px 20px;
-align-items: center;
-background-color: #fff;
-margin: 20px;
-border-radius: 10px;
-box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-font-size: 20px;
-}
-
-.text-box{
-flex: 1;
-min-width: 250px;
-padding: 20px;
-}
-
-.image-box{
-flex: 1;
-min-width: 250px;
-padding: 20px;
-text-align: center;
-transform: translateX(20px);
-}
-
-.image-box img{
-max-width: 450px;
-transition: transform 0.3s ease;
-box-shadow: 0 7px 15px rgba(0,0,0,0.25);
-border-radius: 10px;
-}
-
-.image-box img:hover {
-transform: scale(1.05);
-box-shadow: 0 10px 25px rgba(0,0,0,0.0.35);
-}
-
-#Gallery{
-background-color: #f0f0f0;
-padding: 40px 20px;
-}
-
-.gallery-grid{
-display: grid;
-grid-template-columns: repeat( auto-fit,minmax(250px,1fr));
-gap: 40px;
-max-width: 1200px;
-margin: auto;
-
-}
-
-.gallery-card{
-box-shadow: 0 4px 12px rgba(0,0,0,0.0.15);
-border-radius: 10px;
-text-align: center;
-overflow: hidden;
-background-color: white;
-transition: transform 0.4s ease , box-shadow 0.3s ease-out;
-}
-
-.gallery-card:hover{
-transform: translateY(-5px) scale(1.02);
-box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-.gallery-card:hover img{
-transform: scale(1.20);
-
-}
-.gallery-card img{
-object-fit: cover;
-width: 100%;
-height: 280px;
-transition: transform 0.4s ease;
-}
-
-.gallery-card p {
-font-weight: bold;
-padding: 30px;
-color: #333;
-}
-
-footer{
-padding: 10px;
-text-align: center;
-background-color: #333;
-color: white;
-
-}
-
-</style>
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
 </head>
-
 <body>
-        <header>
-                 <h1>KindThread</h1>
-                  <p>From Waste To Wardrobe: A Sustainable Revolution</p>
-         </header>
+  <div class="hearts" aria-hidden="true"></div>
 
-          <nav class="navbar" >
-                   <a href="#Home">Home</a>
-                   <a href="#Gallery">Wardrobe</a>
-                   <a href="#About">About</a>
-          </nav>
+  <main class="container">
+    <section class="card">
+      <h1>I’m Truly Sorry 💌</h1>
+      <p class="subtitle">I never want to be the reason for your tears. This page is my little way of saying:
+        <strong>I love you deeply, and I’m sorry from my heart.</strong>
+      </p>
+    </section>
 
-          <section id="Home" class="flex-section">
+    <section class="card">
+      <p class="apology">
+        I know I made a mistake, and I understand if you felt hurt. You mean so much to me, and I regret every moment
+        that made you feel otherwise. I can’t change the past, but I promise to do better with my words, my actions,
+        and the way I care for your heart.
+      </p>
+    </section>
 
-                    <div class="text-box">
-                             <h1> Purpose Of KindThread </h1>
-                              <p>KindThread exists to transform fashion into a force for good—merging luxury, modern design, and sustainability.
-We turn discarded materials into timeless, high-quality pieces that celebrate slow fashion over fleeting trends.Our mission is to reduce waste, protect nature, and prove that style can be both elegant and ethical.<br>
-Every creation reflects care for the planet, craftsmanship, and conscious living.
-Through our work, we aim to inspire mindful choices and spark a sustainable revolution in the fashion industry.</p>
-                      </div>
+    <section class="card">
+      <h2>My promises to you 🌹</h2>
+      <ul class="promise-list">
+        <li>I will listen with patience and love.</li>
+        <li>I will choose kindness, even in difficult moments.</li>
+        <li>I will remind you every day how special you are to me.</li>
+      </ul>
 
-                     <div class="image-box">
-                             <img src="https://drive.google.com/file/d/1o5Dt7msmUgvzJzExyt6Jn8N6AKmRcmd3/view?usp=sharing">
-                     </div>
-                      
-                     
-          </section> 
-               
-          <section id="Gallery">
-                 <h2  style="text-align:center;">Our Wardrobe</h2>
-                 <p  style="text-align: center;margin-bottom: 20px;">Luxury that loves the Planet. Hover to explore!</p>  
+      <div class="buttons">
+        <button class="yes" id="forgiveBtn">Forgive Me? 💖</button>
+        <button class="hug" id="hugBtn">Virtual Hug 🤗</button>
+      </div>
+      <p class="message" id="message"></p>
+    </section>
 
-               <div  class="gallery-grid">
-          
-                <div class="gallery-card">
-                  <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\g1.360Z.png">
-                  <p> Kindthread's Classic T-Shirt</p>
-                </div>
-                  
-                 <div class="gallery-card">
-                  <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\g2.819Z.png">
-                  <p> Kindthread's Button Down Shirt </p>
-                </div>
- 
-                <div class="gallery-card">
-                  <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\g3.977Z.png">
-                  <p>Kindthread's Wrap Dress For Women</p>
-                </div>
-                 
-                 <div class="gallery-card">
-                  <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\g4.123Z.png">
-                  <p>Kindthread's Denim Jacket</p>
-                </div>
- 
-                 <div class="gallery-card">
-                  <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\g5.052Z.png">
-                  <p> Kindthread's Maxi Dress</p>
-                </div>
+    <footer class="card">
+      Made with love, honesty, and hope for your smile ✨
+    </footer>
+  </main>
 
-                 <div class="gallery-card">
-                  <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\g6.680Z.png">
-                  <p>Kindthread's Chinos</p>
-                </div>
+  <script>
+    const hearts = document.querySelector('.hearts');
+    for (let i = 0; i < 22; i += 1) {
+      const heart = document.createElement('span');
+      heart.className = 'heart';
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.animationDelay = `${Math.random() * 8}s`;
+      heart.style.animationDuration = `${8 + Math.random() * 6}s`;
+      hearts.appendChild(heart);
+    }
 
-                <div class="gallery-card">
-                  <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\g7.601Z.png">
-                  <p>Kindthread's Wide-leg Trousers </p>
-                </div>
+    const message = document.getElementById('message');
+    document.getElementById('forgiveBtn').addEventListener('click', () => {
+      message.textContent = 'Thank you, my love. I’ll keep proving it every day. 💞';
+    });
 
-                 <div class="gallery-card">
-                  <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\g8.312Z.png">
-                  <p> Kindthread's Lightweight Cardigan</p>
-                </div>
-               </div>  
-         </section>
-
-
-         <section id="About" class="flex-section">
-                       <div class="image-box">
-                             <img src="C:\Users\tejas\OneDrive\Desktop\carmel pics\store.470Z.png">
-                        </div>
-                       <div class="text-box">
-                             <h2> About KindThread</h2>
-                             <p>KindThread began when two friends stumbled upon a warehouse of discarded fabrics destined for landfill.
-They saw not waste, but the possibility of something beautiful—luxury fashion with a conscience.<br>
-With a shared love for design and deep respect for the planet, they started crafting timeless pieces from reclaimed materials.
-Every thread tells a story of transformation, turning yesterday’s waste into tomorrow’s wardrobe.</p>
-                      </div>
-        </section>  
-
-
-        <footer>
-           <p> &copy; All rights reserved|KindThread Pvt ltd.</p>
-        </footer>
-
+    document.getElementById('hugBtn').addEventListener('click', () => {
+      message.textContent = 'Sending you the warmest, longest hug. 🤗💕';
+    });
+  </script>
 </body>
 </html>
-
-
